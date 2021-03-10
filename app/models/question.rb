@@ -9,6 +9,6 @@ class Question < ApplicationRecord
   private
 
   def validate_answers_count
-    errors.add(:title) unless question.answers.count < 5
+    errors.add(:title) if question.answers.count > 5
   end
 end

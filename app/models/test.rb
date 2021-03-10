@@ -9,13 +9,12 @@ class Test < ApplicationRecord
   scope :easy, -> { where(level: 0..1) }
   scope :medium, -> { where(level: 2..4) }
   scope :hard, -> { where(level: 5..Float::INFINITY) }
+  scope :by_category, -> (name) { joins(:category).where(categories: { title: name }) }
 
   validates :title, presence: true, uniqueness: { scope :level }
   validates :level, numericality: { only_integer: true, greater_than: 0 }
 
   def self.names_by_category(category)
-    Test.joins(:category).where(
-      categories: { title: category }
-    ).order(title: :desc).pluck(:title)
+      by_category(name).pluck(:title)
   end
 end
