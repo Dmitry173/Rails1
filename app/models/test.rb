@@ -15,8 +15,6 @@ class Test < ApplicationRecord
   validates :level, numericality: { only_integer: true, greater_than: 0 }
 
   def self.names_by_category(category)
-    Test.joins(:category).where(
-      categories: { title: category }
-    ).order(title: :desc).pluck(:title)
+    by_category(name).order(title: :desc).pluck(:title)
   end
 end
