@@ -3,15 +3,13 @@ class Answer < ApplicationRecord
 
   validates :answer, presence: true
 
-  validate :validate_number
+  validate :validate_number, on: :create
 
   scope :correct, -> { where(correct: true) }
 
   private
 
   def validate_number
-    return unless new_record?
-
-    errors.add(:answer, "too much answers")
+    errors.add(:number, 'too much answers') if Answer.where(question: question).count >= 4
   end
 end
