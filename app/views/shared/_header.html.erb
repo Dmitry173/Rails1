@@ -1,0 +1,9 @@
+<% if user_signed_in? %>
+  <%= link_to "TestGuru", tests_path, class: "nav user" %>
+  <p class="nav user">Welcome, <b><%= current_user.email %></b> Guru</p>
+  <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav user" %>
+<% else %>
+  <p class="nav user">Welcome, future Guru</p>
+  <%= link_to "Sign up", new_user_registration_path, class: "nav user" %>
+  <%= link_to "Log in", new_user_session_path, class: "nav user" %>
+<% end %>
