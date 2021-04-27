@@ -8,7 +8,6 @@ class TestsController < ApplicationController
   end
 
   def show;
-
   end
 
   def new
@@ -39,7 +38,7 @@ class TestsController < ApplicationController
   end
   
   def start
-    @user = User.first
+    @user = current_user
     @user.tests.push(@test)
     redirect_to @user.test_passage(@test)
   end
