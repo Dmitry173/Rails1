@@ -1,0 +1,21 @@
+<p>
+  <strong>Title:</strong>
+  <%= @test.title %>
+</p>
+
+<p>
+  <strong>Level:</strong>
+  <%= @test.level %>
+</p>
+<table>
+
+  <tr>
+    <th>Questions:</th>
+    <th colspan="3">Actions</th>
+  </tr>
+    <%= render partial: 'questions/question', collection: @test.questions %>
+</table>
+
+<p>
+  <%= link_to 'Back to tests', tests_path %><br>
+</p>

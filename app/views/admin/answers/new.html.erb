@@ -1,5 +1,7 @@
 <h1>New Answer</h1>
 
-<%= render 'form', answer: @answer %>
+<h2><%= @question.title %></h2>
 
-<%= link_to 'Back', answers_path %>
+<%= render 'form' %>
+
+<%= link_to 'Back', admin_question_path(@question) %>

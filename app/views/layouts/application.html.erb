@@ -2,17 +2,20 @@
 <html>
   <head>
     <title>TestGuru</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
-  
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= render 'shared/header' %>
-    <%= render 'shared/footer' %>
-    <%= flash_message %>
+    
+
+    <%= render 'shared/flash' %>
+
+    <%= render 'shared/nav' %>
+
     <%= yield %>
+
+    <%= render 'shared/footer' %>
   </body>
 </html>
-

@@ -1,13 +1,8 @@
-<h1><%= question_header(@question) %></h1>
-
-<%= form_with model: route, local: true do |form| %>
-  <%= render 'shared/errors', resource: @question%>
-
-  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-
+<%= form_with model: [:admin, @test, @question], local: true do |form| %>
+  <%= render 'shared/errors', resource: @question %>
   <p>
-    <%= form.label :title%>
-    <%= form.text_field :title%>
+    <%= form.label :title %><br>
+    <%= form.text_field :title, id: :question_title%><br>
   </p>
 
   <p><%= form.submit %></p>

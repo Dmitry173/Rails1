@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  extend Devise::Models
 
   devise :database_authenticatable,
          :registerable,
@@ -8,9 +9,8 @@ class User < ApplicationRecord
          :validatable,
          :confirmable
 
-  has_many :user_tests, dependent: :destroy
-  has_many :participated_user_tests, through: :user_tests, source: :test
-  has_many :created_tests, class_name: 'Test'
+  has_many :test_passages, dependent: :destroy
+  has_many :tests, through: :test_passages, foreign_key: 'test_id'
 
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "wrong format" }
   validates :email, uniqueness: true

@@ -1,3 +1,4 @@
-<%= render 'form', question: @question%>
+<h1><%= question_header %></h1>
+<%= render 'form' %>
 
-<%= link_to "Back", test_path(@question.test.id)%>
+<%= link_to "Back to #{@question.test.title}", admin_test_path(@question.test) %><br>

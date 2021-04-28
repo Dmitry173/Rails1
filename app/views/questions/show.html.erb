@@ -1,0 +1,9 @@
+<h1><%= @question.title %></h1>
+
+<h2>Answers:</h2>
+
+<ol>
+    <%= render @question.answers %>
+</ol>
+
+<%= link_to "Back to #{ @question.test.title } questions list", test_path(@question.test_id) %><br>
