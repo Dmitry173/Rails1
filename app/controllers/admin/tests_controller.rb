@@ -36,12 +36,6 @@ class Admin::TestsController < Admin::BaseController
     @test.destroy!
     redirect_to tests_path
   end
-  
-  def start
-    @user = current_user
-    @user.tests.push(@test)
-    redirect_to @user.test_passage(@test)
-  end
 
   private
 

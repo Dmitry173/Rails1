@@ -1,12 +1,12 @@
 class User < ApplicationRecord
 
- # devise :database_authenticatable,
-  #       :registerable,
-   #      :recoverable,
-    #     :rememberable,
-     #    :trackable,
-      #   :validatable,
-       #  :confirmable
+  devise :database_authenticatable,
+         :registerable,
+         :recoverable,
+         :rememberable,
+         :trackable,
+         :validatable,
+         :confirmable
 
   has_many :user_tests, dependent: :destroy
   has_many :participated_user_tests, through: :user_tests, source: :test
@@ -14,6 +14,10 @@ class User < ApplicationRecord
 
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "wrong format" }
   validates :email, uniqueness: true
+
+  def admin?
+    is_a?(Admin)
+  end
 
   def completed_tests_by_level(level)
     participated_tests.where(level: level)
