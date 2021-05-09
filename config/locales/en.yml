@@ -31,3 +31,27 @@
 
 en:
   hello: "Hello world"
+
+  shared:
+    errors:
+      header:
+        one: "%{count} error detected"
+        other: "%{count} errors detected"
+
+  tests:
+    index:
+      header: "Tricky Tests"
+
+  test_passages:
+    result:
+      header: "the %{title} Test was completed!"
+  gists:
+    create:
+      success:  <a href="%{url}" target="_blank" rel="nofollow">Gist was successfully created!</a>
+      failure: "An error occured while saving gist"
+
+  admin:
+    tests:
+      create:
+        success: "Test was succeGuru test!"
+        
