@@ -1,0 +1,8 @@
+<h1>The <%= @test_passage.test.title %> was complited! </h1>
+
+<h2>You have correctly answered <%= pluralize(@test_passage.correct_questions, 'question')%>! </h2>
+
+<% success_or_fail_result =  @test_passage.success? ? "success" : "fail" %>
+<p> You have passed <span class=<%= success_or_fail_result %>><%= @test_passage.success_rate %>%</span> of test</p>
+
+<p><%= link_to 'Back to tests', tests_path %></p>

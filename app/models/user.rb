@@ -1,10 +1,23 @@
 class User < ApplicationRecord
-  has_many :user_tests, dependent: :destroy
-  has_many :participated_user_tests, through: :user_tests, source: :test
-  has_many :created_tests, class_name: 'Test'
+  extend Devise::Models
 
-  validates :name, presence: true
-  validates :email, presence: true
+  devise :database_authenticatable,
+         :registerable,
+         :recoverable,
+         :rememberable,
+         :trackable,
+         :validatable,
+         :confirmable
+
+  has_many :test_passages, dependent: :destroy
+  has_many :tests, through: :test_passages, foreign_key: 'test_id'
+
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "wrong format" }
+  validates :email, uniqueness: true
+
+  def admin?
+    is_a?(Admin)
+  end
 
   def completed_tests_by_level(level)
     participated_tests.where(level: level)
