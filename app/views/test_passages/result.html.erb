@@ -1,8 +1,10 @@
-<h1>The <%= @test_passage.test.title %> was complited! </h1>
-
-<h2>You have correctly answered <%= pluralize(@test_passage.correct_questions, 'question')%>! </h2>
-
-<% success_or_fail_result =  @test_passage.success? ? "success" : "fail" %>
-<p> You have passed <span class=<%= success_or_fail_result %>><%= @test_passage.success_rate %>%</span> of test</p>
-
-<p><%= link_to 'Back to tests', tests_path %></p>
+<h1> <%= I18n.t('test_passages.result.header', title: @test_passage.test.title) %></h1>
+<% if @test_passage.success? %>
+ <p id="success">
+  You successfully passed this test <%=@test_passage.percent_result%>%
+ </p>
+<% else %>
+  <p id="fail">
+    You failed this test <%=@test_passage.percent_result%>%
+  </p>
+<% end %>

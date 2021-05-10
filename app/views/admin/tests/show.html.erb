@@ -1,23 +1,21 @@
-<p>
-  <strong>Title:</strong>
-  <%= @test.title %>
-</p>
-
-<p>
-  <strong>Level:</strong>
-  <%= @test.level %>
-</p>
+<h1><%=@test.title %></h1>
+<p><%= Test.human_attribute_name(:level) %>: <%=@test.level %></p>
+<p><%= Test.human_attribute_name(:category) %>: <%=@test.category %></p>
+<p><%= Test.human_attribute_name(:author) %>: <%=@test.author %></p>
+<br>
+<%= link_to t('.edit'), edit_admin_test_path(@test) %> |
+<%= link_to t('.list'), admin_tests_path %>
+<br>
 <table>
-
-  <tr>
-    <th>Questions:</th>
-    <th colspan="3">Actions</th>
-  </tr>
-    <%= render partial: 'admin/questions/question', collection: @test.questions %>
+  <thead>
+    <tr>
+      <th><%= t('.questions') %></th>
+      <th colspan="3"><%= t('.actions') %></th>
+    </tr>
+  </thead>
+  <tbody>
+  <%#= render @questions %>
+  <%= render partial: 'admin/questions/question', collection: @questions %>
+  </tbody>
 </table>
-
-<p>
-  <%= link_to "Edit #{@test.title} test", edit_admin_test_path(@test) %><br>
-  <%= link_to 'Create new question', new_admin_test_question_path(@test) %><br>
-  <%= link_to 'Back to tests', admin_tests_path %><br>
-</p>
+<%= link_to t('.new_question'),  new_admin_test_question_path(@test) %>
