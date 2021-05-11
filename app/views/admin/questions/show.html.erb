@@ -1,11 +1,15 @@
-<h1><%= @question.title %></h1>
+<div class="container">
+  <h1><%=@question.test %></h1>
 
-<h2>Answers:</h2>
+  <p><%= @question.body %></p>
 
-<ol>
+  <h2>Answers</h2>
+  <%= link_to 'New answer', new_admin_question_answer_path(@question), class: "btn btn-primary" %>
+
+  <ol>
     <%= render @question.answers %>
-</ol>
+  </ol>
 
-<%= link_to 'New Answer', new_admin_question_answer_path(@question) %><br>
-<%= link_to "Back to #{ @question.test.title } questions list", admin_test_path(@question.test_id) %><br>
-<%= link_to "Delete #{@question.title} question", admin_question_path(@question), method: :delete %><br>
+  <%= link_to 'Edit', edit_admin_question_path(@question), class: "btn btn-link" %> |
+  <%= link_to 'To test', admin_test_path(@question.test), class: "btn btn-link" %>
+</div>
