@@ -24,10 +24,15 @@ class TestPassagesController < ApplicationController
 
     gist_response = GistQuestionService.new(question).call
 
+    if gist.success?
     gist_url = "https://gist.github.com/#{gist_response.id}"
     gist = Gist.new(question: question,
                     user: current_user,
                     url: gist_url)
+    else
+      flash[:alert] = t('.failure')
+    end
+    redirect_to @test_passage
 
     if gist.save
       link = "<a href=\"#{gist_url}\" target=\"_blank\">Gist</a>"

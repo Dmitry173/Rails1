@@ -8,6 +8,10 @@ class  GistQuestionService
   def call
     @client.create_gist(gist_params)
   end
+  
+  def success?
+    @client.last_response.status == 200 || 201
+  end
 
   private
     def gist_params
