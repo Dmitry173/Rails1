@@ -25,6 +25,10 @@ gem 'jquery-rails'
 
 gem 'bootstrap', '~> 5.0.0'
 
+gem "octokit"
+
+gem 'dotenv-rails', require: 'dotenv/rails-now'
+
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
