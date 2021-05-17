@@ -34,9 +34,6 @@ function sortRowsByTitle() {
 
   sortedTable.classList.add('table')
 
-  // TODO сделать перенос всех классов
-  // sortedTable.classList = table.classList
-
   sortedTable.appendChild(rows[0])
 
   for ( var i = 0; i <sortedRows.length; i++) {
