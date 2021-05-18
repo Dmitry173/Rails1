@@ -14,5 +14,16 @@
       <%= b.label %>
     </p>
   <% end %>
+
+   <p><%= link_to 'Gist question', send_gist_test_passage_path(@test_passage), method: :post %></p>
+
+  <input type="hidden"
+         class="question-data"
+         data-question-number="<%= @test_passage.question_number(@test_passage.current_question) %>"
+         data-total-questions-count="<%= @test_passage.test.questions.size %>"
+  />
+
+  <p>
+    
   <p><%= form.submit 'Next' %></p>
 <% end %>
