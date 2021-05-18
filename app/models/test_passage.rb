@@ -24,14 +24,6 @@ class TestPassage < ApplicationRecord
   def counting_result
     (correct_questions / test.questions.size.to_f) * 100
   end
-  
-  def done_questions_count
-    if current_question
-      test.questions.where('id < ?', current_question_id).count
-    else
-      test.questions_count
-    end
-  end
 
   private
 

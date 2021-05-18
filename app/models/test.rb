@@ -22,7 +22,6 @@ class Test < ApplicationRecord
     @count ||= questions.count
   end
 
-
   def to_s
     "#{category.title} #{title} #{level} #{author.name}"
   end
